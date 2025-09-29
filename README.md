@@ -1,7 +1,7 @@
 # Weight calculator
 This project calculates weight on Mars based on mass that user types. There is a second option that shows names of Martian rovers and their weight on Mars compared to their weight on Earth
 
-## How is works
+## How this works
 At the start user has two options:
 a) Type a mass and see its weight on Mars
 b) Show the rovers weight on Mars
