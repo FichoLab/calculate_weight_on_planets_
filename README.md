@@ -3,7 +3,7 @@ This project calculates weight on Mars based on mass that user types. There is a
 
 ## How this works
 At the start user has two options:
-a) a) Type a mass and see it's weight on other Planets
+a) Type a mass and see it's weight on other Planets
 b) Show the rovers weight on Mars
 
 User types a or b and presses Enter, than if "a" is selected user types mass in kg
