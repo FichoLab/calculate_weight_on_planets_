@@ -1,22 +1,40 @@
- import csv
+import csv
 from traceback import print_tb
 
 import pandas as pd
 import os
 
+# Dictionary of planets in our solar system and their gravity (m/s^2)
+planet_gravity = {
+    "Mercury": 3.7,
+    "Venus": 8.87,
+    "Earth": 9.81,
+    "Moon": 1.62,
+    "Mars": 3.711,
+    "Jupiter": 24.79,
+    "Saturn": 10.44,
+    "Uranus": 8.69,
+    "Neptune": 11.15
+}
+
 print("Hello,choose an option:")
-print( "a) Type a mass and see it's weight on Mars")
+print( "a) Type a mass and see it's weight on other Planet")
 print( "b) Show the rovers weight on Mars")
 
-choice = input("Type a or b and press enter:")
+choice = input("Type a or b and press enter: ")
 
 if choice == "a":
-    mass = float(input("Enter the mass in kilograms: "))
-    Gravity_Mars = 3.711   # m/s^2
-    weight_Mars_N = mass * Gravity_Mars
-    weight_Mars_Lbs = weight_Mars_N * 0.224809  # Convert N to Lbs
-    print(f"Mass: {mass:.2f} kg")
-    print(f"weight on Mars: {weight_Mars_N:.2f} N ({weight_Mars_Lbs:.2f} Lbs)")
+    mass = float(input("Type a mass weight: "))
+
+    results = []
+    for planet, gravity in planet_gravity.items():
+        weight_N = mass * gravity
+        weight_Lbs = weight_N * 0.224809   # Convert Newtons (N) into pounds (Lbs)
+        results.append([planet, weight_N, weight_Lbs])
+    print(f"Mass weight: {mass:.2f} kg")
+    print("Weight on different Planets:")
+    for planet, N, Lbs in results:
+        print(f"{planet:<8}: {N:8.2f} N  ({Lbs:8.2f} Lbs)")
 
 elif choice == "b":
     rovers = [
@@ -38,8 +56,8 @@ elif choice == "b":
     rover = pd.read_csv(filename)
 
     # Constants
-    Gravity_Earth = 9.81  # m/s^2
-    Gravity_Mars = 3.711  # m/s^2
+    Gravity_Earth = planet_gravity["Earth"]  # m/s^2
+    Gravity_Mars = planet_gravity["Mars"]    # m/s^2
 
     # Calculate Weight
     rover["Weight_Earth_N"] = rover["Mass_kg"] * Gravity_Earth
@@ -58,6 +76,4 @@ elif choice == "b":
     # Print results
     print("Rover Weight:")
     print(rover[['Name', 'Weight_Earth_N', 'Weight_Earth_Lbs', 'Weight_Mars_N', 'Weight_Mars_Lbs']])
-
-
 
