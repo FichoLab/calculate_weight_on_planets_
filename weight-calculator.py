@@ -18,7 +18,7 @@ planet_gravity = {
 }
 
 print("Hello,choose an option:")
-print( "a) Type a mass and see it's weight on other Planet")
+print( "a) Type a mass and see weight on other Planets")
 print( "b) Show the rovers weight on Mars")
 
 choice = input("Type a or b and press enter: ")
@@ -76,4 +76,5 @@ elif choice == "b":
     # Print results
     print("Rover Weight:")
     print(rover[['Name', 'Weight_Earth_N', 'Weight_Earth_Lbs', 'Weight_Mars_N', 'Weight_Mars_Lbs']])
+
 
